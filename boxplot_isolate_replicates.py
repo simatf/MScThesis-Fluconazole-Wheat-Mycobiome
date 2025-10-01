@@ -23,19 +23,19 @@ data = data[data['Putative species'] != 'Unknown']
 richness = data.groupby(['Treatment', 'Replicate', 'Medium'])['Isolate'].nunique().reset_index(name='isolate_richness')
 #richness = data.groupby(['Treatment', 'Replicate'])['Putative species'].nunique().reset_index(name='species_richness')
 
-ax = sns.boxplot(data= richness, x= 'Treatment', y= 'isolate_richness', hue= 'Medium', dodge= True, gap= 0.05)
-sns.stripplot(data= richness, x= 'Treatment', y= 'isolate_richness', hue= 'Medium',
-              dodge= True, jitter= True, color= 'black', alpha= 0.8, legend= False)
+# ax = sns.boxplot(data= richness, x= 'Treatment', y= 'isolate_richness', hue= 'Medium', dodge= True, gap= 0.05)
+# sns.stripplot(data= richness, x= 'Treatment', y= 'isolate_richness', hue= 'Medium',
+#               dodge= True, jitter= True, color= 'black', alpha= 0.8, legend= False)
 ############## 2. by replicate ##################
-# ax = sns.boxplot(data= richness, x='Replicate', y='isolate_richness', hue='Treatment', palette={"Control": "skyblue", "Fluconazole": "mediumorchid"}, legend= True)
-# ax.set_ylim(bottom= 0)
+ax = sns.boxplot(data= richness, x='Replicate', y='isolate_richness', hue='Treatment', palette={"Control": "skyblue", "Fluconazole": "mediumorchid"}, legend= True)
+ax.set_ylim(bottom= 0)
 
-# pts = sns.stripplot(
-#     data=richness,
-#     x='Replicate', y='isolate_richness',
-#     hue='Treatment', dodge=True, jitter=True,
-#     palette={"Control": "black", "Fluconazole": "black"},  # temp color
-#     alpha=0.9, ax=ax, legend=False)
+pts = sns.stripplot(
+    data=richness,
+    x='Replicate', y='isolate_richness',
+    hue='Treatment', dodge=True, jitter=True,
+    palette={"Control": "black", "Fluconazole": "black"},  # temp color
+    alpha=0.9, ax=ax, legend=False)
 #################################################
 
 ### statistics
@@ -120,14 +120,13 @@ for treatment in treatments:
 #annotator.apply_and_annotate()
 
 ### configurations
-plt.legend(title= 'Medium')
+#plt.legend(title= 'Medium')
 plt.ylabel('Isolate Abundance', fontsize= 14)
-plt.xlabel('Treatment', fontsize= 14)
-#plt.xlabel('Replicate', fontsize= 14)
-plt.xticks(ticks= [0, 1], labels= ['Control', 'Fluconazole'], fontsize= 12)
-#plt.xticks(ticks= [0, 1, 2, 3], labels= [1,2,3,4], fontsize= 12)
-plt.yticks(fontsize= 12)
-plt.ylim(bottom= 0)
+#plt.xlabel('Treatment', fontsize= 14)
+plt.xlabel('Replicate', fontsize= 14)
+#plt.xticks(ticks= [0, 1], labels= ['Control', 'Fluconazole'], fontsize= 12)
+plt.xticks(ticks= [0, 1, 2, 3], labels= [1,2,3,4], fontsize= 12)
+plt.yticks(ticks= plt.yticks()[0], fontsize= 12)
 plt.tight_layout()
 
 #plt.savefig("00_NEW_boxplot_isolate_replicate.svg", format= 'svg')

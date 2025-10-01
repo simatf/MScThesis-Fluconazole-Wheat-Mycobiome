@@ -9,7 +9,7 @@ from statsmodels.stats.multitest import multipletests
 
 # -------------------------------------------
 
-data = pd.read_csv('shannon_rem_dup.csv')
+data = pd.read_csv('shannon_rem_dup_isolates.csv')
 
 data.dropna(how= 'all', inplace= True)
 
@@ -104,6 +104,6 @@ plt.yticks(ticks= plt.yticks()[0], fontsize= 12)
 #plt.ylim(bottom= 0, top= 10)
 plt.tight_layout()
 
-plt.savefig("000_NEW_boxplot_species_replicate.svg", format= 'svg')
+#plt.savefig("000_NEW_boxplot_species_replicate.svg", format= 'svg')
 
 plt.show()

@@ -98,10 +98,10 @@ y_max = plot_df['Kill_Percent'].max()
 h = 3  # height offset for the line
 ax.plot([x1, x1, x2, x2], [y_max+h+4, y_max+h+6, y_max+h+6, y_max+h+4], lw=1.2, color='black')
 ax.text((x1+x2)/2, y_max+h+6, f"p = {p_val:.3g} (Wilcoxon test)", 
-        ha='center', va='bottom', fontsize=10)
+        ha='center', va='bottom', fontsize=18)
 
-plt.ylim(0, 100)
-plt.ylabel('Relative Inhibition [%]', fontsize= 14)
+plt.ylim(0, 105)
+plt.ylabel('Relative Inhibition [%]', fontsize= 20)
 plt.xlabel('')
 plt.tight_layout()
 plt.show()

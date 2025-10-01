@@ -46,10 +46,12 @@ sns.stripplot(x='Label', y='Kill_Percent', data=flu375_df, hue='Source',
 
 # Set y-axis limits
 plt.ylim(-20, 70)
-plt.ylabel('Relative Inhibition [%]')
+plt.xlim(-0.5, 22.5)
+plt.ylabel('Relative Inhibition [%]', fontsize= 14)
 plt.xlabel('')
 #plt.title('Kill % at 5Fluconazole375 across all Isolates (Grouped by Species)')
-plt.xticks(rotation=45, ha='right')
+plt.xticks(rotation=45, ha='right', fontsize= 12)
+plt.yticks(fontsize= 12)
 
 # Add statistical comparisons within each species
 y_base = 50
@@ -76,17 +78,19 @@ for species in species_list:
             equal_var = levene(d1, d2)[1] > 0.05
 
             # Choose test
-            if normal1 and normal2:
-                if equal_var:
-                    stat, p = ttest_ind(d1, d2)
-                    print('t-test')
-                    test= 'T-test'
-                else:
-                    stat, p = ttest_ind(d1, d2, equal_var=False)
-                    print('t-test non-equal')
-            else:
-                stat, p = mannwhitneyu(d1, d2, alternative='two-sided')
-                test= 'Wilcoxon'
+            # if normal1 and normal2:
+            #     if equal_var:
+            #         stat, p = ttest_ind(d1, d2)
+            #         print('t-test')
+            #         test= 'T-test'
+            #     else:
+            #         stat, p = ttest_ind(d1, d2, equal_var=False)
+            #         print('t-test non-equal')
+            # else:
+            #     stat, p = mannwhitneyu(d1, d2, alternative='two-sided')
+            #     test= 'Wilcoxon'
+            stat, p = mannwhitneyu(d1, d2, alternative='two-sided')
+            #     test= 'Wilcoxon'
 
             # Annotate inside plot area
             label1 = species_df[species_df['Isolate'] == iso1]['Label'].iloc[0]
@@ -96,7 +100,7 @@ for species in species_list:
                 x2 = label_order.index(label2)
                 y = y_base + i * pad
                 ax.plot([x1, x1, x2, x2], [y, y, y, y], lw=1.2, color='gray')
-                ax.text((x1 + x2) / 2, y + 0.5, f'p={p:.3g} ({test})', ha='center', fontsize=8)
+                ax.text((x1 + x2) / 2, y + 0.5, f'p={p:.2f}', ha='center', fontsize= 12)
 
 # Step: Add faint dotted vertical lines between species
 species_per_label = flu375_df.set_index('Label')['Species_Grouped'].to_dict()
@@ -112,7 +116,7 @@ legend_elements = [
     Patch(facecolor='skyblue', edgecolor='black', label='Control'),
     Patch(facecolor='mediumorchid', edgecolor='black', label='Fluconazole')
 ]
-ax.legend(handles=legend_elements, loc='upper right')
+ax.legend(handles=legend_elements, loc='upper right', fontsize= 12)
 
 plt.tight_layout()
 plt.show()

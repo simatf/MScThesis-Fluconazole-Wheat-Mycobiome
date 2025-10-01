@@ -91,8 +91,8 @@ x1, x2 = 0, 1  # positions of the boxes on x-axis
 y_max = plot_df['Kill_Percent'].max()
 h = 3  # height offset for the line
 ax.plot([x1, x1, x2, x2], [y_max+h, y_max+h+2, y_max+h+2, y_max+h], lw=1.2, color='black')
-ax.text((x1+x2)/2, y_max+h+2, f"p = {p_val:.3g} (Wilcoxon test)", 
-        ha='center', va='bottom', fontsize=10)
+ax.text((x1+x2)/2, y_max+h+2, f"p = {p_val:.2g}", 
+        ha='center', va='bottom', fontsize= 14)
     
 legend_elements = [
     Patch(facecolor='skyblue', edgecolor='black', label='Control exclusively'),
@@ -101,8 +101,9 @@ legend_elements = [
 #ax.legend(handles=legend_elements, loc='upper right')
 
 plt.ylim(-20, 60)
-plt.ylabel('Relative Inhibition [%]', fontsize= 14)
+plt.ylabel('Relative Inhibition [%]', fontsize= 16)
 plt.xlabel('')
-plt.xticks([0, 1], labels= ['Control (exclusive)', 'Fluconazole + Control'])
+plt.xticks([0, 1], labels= ['Control (exclusive)', 'Fluconazole + Control'], fontsize= 14)
+plt.yticks(fontsize= 14)
 plt.tight_layout()
 plt.show()

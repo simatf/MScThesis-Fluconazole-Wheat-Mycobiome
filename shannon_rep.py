@@ -82,10 +82,10 @@ if p_val < 0.001:
 else:
     p_text = f"p = {p_val:.3f}"
 
-ax.text((x1 + x2) / 2, y + h + 0.001, p_text, ha="center", va="bottom")
+ax.text((x1 + x2) / 2, y + h + 0.001, p_text, ha="center", va="bottom", fontsize= 14)
 
-plt.ylabel('Shannon Diversity Index', fontsize= 14)
-plt.xlabel('Treatment', fontsize= 14)
-plt.xticks(ticks= [1, 2], labels= ['Control', 'Fluconazole'], fontsize= 12)
-plt.yticks(ticks= plt.yticks()[0], fontsize= 12)
+plt.ylabel('Shannon Diversity Index', fontsize= 16)
+plt.xlabel('Treatment', fontsize= 16)
+plt.xticks(ticks= [1, 2], labels= ['Control', 'Fluconazole'], fontsize= 14)
+plt.yticks(ticks= plt.yticks()[0], fontsize= 14)
 plt.show()

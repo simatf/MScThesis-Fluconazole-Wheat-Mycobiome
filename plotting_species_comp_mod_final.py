@@ -104,11 +104,12 @@ legend_elements = [
     Patch(facecolor='skyblue', edgecolor='black', label='Control (exclusive)'),
     Patch(facecolor='salmon', edgecolor='black', label='Fluconazole + Control')
 ]
-ax.legend(handles=legend_elements, loc='upper right')
+ax.legend(handles=legend_elements, loc='upper right', fontsize= 12)
 
 plt.ylim(0, 100)
-plt.ylabel('Relative Inhibition [%]')
+plt.ylabel('Relative Inhibition [%]', fontsize= 14)
 plt.xlabel('')
-plt.xticks(rotation=45, ha='right')
+plt.xticks(rotation=45, ha='right', fontsize= 12)
+plt.yticks(fontsize= 12)
 plt.tight_layout()
 plt.show()

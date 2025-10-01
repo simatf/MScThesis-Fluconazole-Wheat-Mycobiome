@@ -50,7 +50,7 @@ for container in ax.containers:
 #    ax.bar_label(container, labels=labels, label_type='center', fontsize=9)
 ####################
 
-
+plt.xlim(-0.25, 1.25)
 plt.xlabel('Treatment', fontsize=14)
 plt.ylabel('Relative Abundance [%]', fontsize=14)
 #plt.ylabel('Isolate Count (N)', fontsize=14)
